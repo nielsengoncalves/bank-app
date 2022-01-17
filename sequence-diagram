@@ -1,0 +1,56 @@
+sequenceDiagram
+    actor Customer
+    participant MobileApp
+    participant CustomerService
+    participant Kafka
+    participant AccountService
+    participant CardService
+    participant LimitService
+
+    activate Customer
+    Customer ->>+ MobileApp: signs up
+
+    MobileApp ->>+ CustomerService: creates new customer (POST /api/customer)
+    CustomerService ->> CustomerService: saves customer into database
+    CustomerService ->> Kafka: publishes CustomerCreatedEvent
+    CustomerService ->>- MobileApp: 201 (CREATED)
+    MobileApp ->>- Customer: displays that account is being created and might take some time
+    deactivate Customer
+
+
+    Kafka ->> AccountService: consumes CustomerCreatedEvent
+    activate AccountService
+    AccountService ->> AccountService: generate account (IBAN)
+    AccountService ->> AccountService: save account into database
+    AccountService ->> Kafka: publishes AccountCreatedEvent
+    deactivate AccountService
+
+    Kafka ->> CardService: consumes AccountCreatedEvent
+    activate CardService
+    CardService ->> CardService: generate card details (number + cvv + name)
+    CardService ->> CardService: save card into database
+    CardService ->> Kafka: publishes CardCreatedEvent
+    deactivate CardService
+
+    Kafka ->> LimitService: consumes AccountCreatedEvent
+    activate LimitService
+    LimitService ->> LimitService: defines account default limits
+    LimitService ->> LimitService: save account limit into database
+    LimitService ->> Kafka: publishes AccountLimitDefinedEvent
+    deactivate LimitService
+
+    Kafka ->> LimitService: consumes CardCreatedEvent
+    activate LimitService
+    LimitService ->> LimitService: defines card default limits
+    LimitService ->> LimitService: save card limits into database
+    LimitService ->> Kafka: publishes CardLimitDefinedEvent
+    deactivate LimitService
+     
+    
+
+
+
+
+
+
+
