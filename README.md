@@ -19,12 +19,12 @@ Create a microservice (CustomerService) which will be responsible for handling t
     "email": "john.doe@gmail.com",
     "nationality": "Brazil",
     "document": {
-        "type": "passport | id",
+        "type": "PASSPORT | ID",
         "number": "FG123345BR"
     },	
     "addresses": [
         {
-            "type": "delivery | billing",
+            "type": "DELIVERY | BILLING",
             "postCode": "38401293",
             "address": "Rua das Oliveiras",
             "number": "123",
@@ -60,13 +60,13 @@ This endpoint should look for the customer with given id into the database and r
     "birthdate": "1992-07-20",
     "nationality": "Brazil",
     "document": {
-        "type": "passport",
+        "type": "PASSPORT",
         "number": "FG123345BR"
     },	
     "addresses": [
         {
             "id": "9a1673df-c929-416b-b6fc-ed44b2942c41"
-            "type": "delivery | billing",
+            "type": "DELIVERY | BILLING",
             "postCode": "38401293",
             "address": "Rua das Oliveiras",
 	    "number": "123",
