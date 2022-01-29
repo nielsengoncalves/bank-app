@@ -8,7 +8,7 @@ Create a microservice (CustomerService) which will be responsible for handling t
 
 ### Create Customer Endpoint
 
-**Endpoint**: POST /api/customer
+**Endpoint**: `POST /api/customer`
 
 **Body**: 
 ```json
@@ -49,7 +49,7 @@ If everything works correctly, the endpoint should return the HTTP status  `201 
 
 ### Get Customer By ID Endpoint
 
-**Endpoint**: GET /api/customer/{customerId}
+**Endpoint**: `GET /api/customer/{customerId}`
 
 This endpoint should look for the customer with given id into the database and return the data following the format below. The endpoint should return the HTTP status `200 OK` if the customer is found or `404 NOT FOUND` otherwise.
 
@@ -76,10 +76,11 @@ This endpoint should look for the customer with given id into the database and r
 	}
     ]
 }
+```
 
 ### Delete Customer Endpoint
 
-**Endpoint**: DELETE /api/customer/{customerId}
+**Endpoint**: `DELETE /api/customer/{customerId}`
 
 This endpoint should delete the customer with given id (SOFT DELETE). The endpoint should return the HTTP status `204 NO CONTENT` if the customer was removed successfully, `404 NOT FOUND` if customer is not found.
 
@@ -88,7 +89,7 @@ No payload should be returned from this endpoint.
 
 ### Update Customer By ID Endpoint
 
-**Endpoint**: PUT /api/customer/{customerId}
+**Endpoint**: `PUT /api/customer/{customerId}`
 
 This endpoint should update the customer with given id into the database and return the data following the format below. The endpoint should return the HTTP status `200 OK` if the customer is found and updated sucessfully, `404 NOT FOUND` if customer is not found or if customer is inactive and `400 BAD REQUEST` if the data provided is invalid.
 
