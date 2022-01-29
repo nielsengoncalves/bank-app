@@ -16,6 +16,7 @@ Create a microservice (CustomerService) which will be responsible for handling t
     "firstName": "John",
     "lastName": "Doe",
     "birthdate": "1992-07-20",
+    "email": "john.doe@gmail.com",
     "nationality": "Brazil",
     "document": {
         "type": "passport | id",
@@ -55,6 +56,7 @@ This endpoint should look for the customer with given id into the database and r
     "id": "cfb45ec7-f6f8-408b-8115-68d8c7fadbea"
     "firstName": "John",
     "lastName": "Doe",
+    "email": "john.doe@gmail.com",
     "birthdate": "1992-07-20",
     "nationality": "Brazil",
     "document": {
