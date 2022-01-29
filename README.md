@@ -95,7 +95,7 @@ This endpoint should update the customer with given id into the database and ret
 
 ** All the fields, but the ID should be updatable. **
 
-This operation replaces the whole object with the provided structure. 
+This operation replaces the whole object with the provided structure and returns the saved object:
 
 ```json
 {
