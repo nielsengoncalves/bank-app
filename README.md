@@ -45,6 +45,8 @@ CustomerCreatedEvent
 
 If everything works correctly, the endpoint should return the HTTP status  `201 (Created)`
 
+*Each customer must have a document, a billing adress and a billing address.*
+
 ### Get Customer By ID Endpoint
 
 **Endpoint**: GET /api/customer/{customerId}
@@ -57,6 +59,49 @@ This endpoint should look for the customer with given id into the database and r
     "firstName": "John",
     "lastName": "Doe",
     "email": "john.doe@gmail.com",
+    "birthdate": "1992-07-20",
+    "nationality": "Brazil",
+    "document": {
+        "type": "PASSPORT",
+        "number": "FG123345BR"
+    },	
+    "addresses": [
+        {
+            "id": "9a1673df-c929-416b-b6fc-ed44b2942c41"
+            "type": "DELIVERY | BILLING",
+            "postCode": "38401293",
+            "address": "Rua das Oliveiras",
+	    "number": "123",
+	    "complement": "Optional"
+	}
+    ]
+}
+
+### Delete Customer Endpoint
+
+**Endpoint**: DELETE /api/customer/{customerId}
+
+This endpoint should delete the customer with given id (SOFT DELETE). The endpoint should return the HTTP status `204 NO CONTENT` if the customer was removed successfully, `404 NOT FOUND` if customer is not found.
+
+No payload should be returned from this endpoint.
+
+
+### Update Customer By ID Endpoint
+
+**Endpoint**: PUT /api/customer/{customerId}
+
+This endpoint should update the customer with given id into the database and return the data following the format below. The endpoint should return the HTTP status `200 OK` if the customer is found and updated sucessfully, `404 NOT FOUND` if customer is not found or if customer is inactive and `400 BAD REQUEST` if the data provided is invalid.
+
+** All the fields, but the ID should be updatable. **
+
+This operation replaces the whole object with the provided structure. 
+
+```json
+{
+    "id": "cfb45ec7-f6f8-408b-8115-68d8c7fadbea"
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john.doe.updated@gmail.com",
     "birthdate": "1992-07-20",
     "nationality": "Brazil",
     "document": {
