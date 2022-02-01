@@ -97,6 +97,32 @@ This endpoint should update the customer with given id into the database and ret
 
 This operation replaces the whole object with the provided structure and returns the saved object:
 
+
+Payload:
+```json
+{
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john.doe.updated@gmail.com",
+    "birthdate": "1992-07-20",
+    "nationality": "Brazil",
+    "document": {
+        "type": "PASSPORT",
+        "number": "FG123345BR"
+    },	
+    "addresses": [
+        {
+            "type": "DELIVERY | BILLING",
+            "postCode": "38401293",
+            "address": "Rua das Oliveiras",
+	    "number": "123",
+	    "complement": "Optional"
+	}
+    ]
+}
+```
+
+Response:
 ```json
 {
     "id": "cfb45ec7-f6f8-408b-8115-68d8c7fadbea"
@@ -121,5 +147,4 @@ This operation replaces the whole object with the provided structure and returns
     ]
 }
 ```
-
 
